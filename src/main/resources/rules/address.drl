@@ -1,0 +1,24 @@
+package plausibcheck.adress
+
+import com.drool.abstractdrool.service.ServiceImpl;
+import com.drool.abstractdrool.entity.TestBean;
+
+rule "rule1"
+salience 1
+no-loop true
+    when
+        bean : TestBean(type == 1)
+        checkBean : ServiceImpl();
+    then
+        checkBean.check1();
+		System.out.println("规则1：校验通过!");
+end
+
+rule "rule2"
+salience 2
+    when
+        bean : TestBean(type == 2)
+        checkBean : ServiceImpl();
+    then
+        checkBean.check2();
+end
